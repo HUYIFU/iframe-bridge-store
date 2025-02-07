@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",                // 或 "es2015"/"es6" 等，取决于您要支持的环境
+    "module": "commonjs",           // 或 "es2015"/"esnext" 等
+    "declaration": true,            // 生成 .d.ts 文件
+    "outDir": "./dist",            // 编译输出目录
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"],              // 源码目录
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+}
