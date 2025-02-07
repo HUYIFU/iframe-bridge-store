@@ -11,6 +11,7 @@ export class IframeBridgeStore<
   private store: UseBoundStore<StoreApi<T>> | null = null;
   private initialState: StoreState<T> = {} as T;
   private methods: Methods = {};
+  private test = 1;
 
   constructor(
     options: {
@@ -20,9 +21,10 @@ export class IframeBridgeStore<
   ) {
     this.initialState = options.initialState || ({} as T);
     this.methods = options.methods || {};
+    console.log("this.initialState", this.initialState, this.test);
   }
 
-  // 创建共享状态存储
+  // 创建共享状态存储----1121312
   private createStore() {
     return create<StoreState<T>>((set) => ({
       ...this.initialState,
@@ -70,10 +72,12 @@ export class IframeBridgeStore<
 
   // 同步状态到另一端
   private syncState(newState: Partial<StoreState<T>>) {
+    console.log("newState", newState);
     if (!this.connection) return;
 
     this.connection.promise
       .then((api) => {
+        console.log("api", api);
         if ("updateState" in api) {
           (api as any).updateState(newState);
         }
